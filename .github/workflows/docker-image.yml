@@ -32,6 +32,5 @@ jobs:
         docker build . --file Dockerfile --tag cubix4/permission-bypass:${{ env.RELEASE_VERSION }} --tag cubix4/permission-bypass:latest
     - name: Push to Docker Hub
       run: |
-        docker tag permission-bypass:latest  
         docker push cubix4/permission-bypass:${{ env.RELEASE_VERSION }}
         docker push cubix4/permission-bypass:latest
