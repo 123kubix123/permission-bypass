@@ -25,7 +25,10 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         
     - name: Build the Docker image
-      run: docker build ./src --file Dockerfile --tag cubix4/permission-bypass:${{ env.RELEASE_VERSION }} --tag cubix4/permission-bypass:latest
+      run: |
+        ls -al
+        cd src
+        docker build . --file Dockerfile --tag cubix4/permission-bypass:${{ env.RELEASE_VERSION }} --tag cubix4/permission-bypass:latest
     - name: Push to Docker Hub
       run: |
         docker tag permission-bypass:latest  
