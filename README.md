@@ -5,8 +5,8 @@ Example use case: You have a file that has root:root 600 permissions and the som
 Just run this container and You will always have an up to date copy of that file with more open permissions. The script will create a copy named "${filename}.back" with "root:root 644" permissions.
 
 ## Example docker-compose
-DEBUG - if true will pront a message any time a change to file is detected and a copy has been made
-WATHCLIST - whitespace separated file list
+- DEBUG: if true will pront a message any time a change to file is detected and a copy has been made
+- WATHCLIST: whitespace separated file list
 
 ```
   permission-bypass:
