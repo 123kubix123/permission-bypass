@@ -1,0 +1,30 @@
+name: Docker Image CI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set env
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+    - name: Test
+      run: |
+        echo $RELEASE_VERSION
+        echo ${{ env.RELEASE_VERSION }}
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
+#    - name: Build the Docker image
+#      run: docker build ./src --file Dockerfile --tag permission-bypass:$(date +%s) --tag permission-bypass:latest
+#    - name: Push to Docker Hub
+#      run: docker build ./src --file Dockerfile --tag permission-bypass:$(date +%s) 
