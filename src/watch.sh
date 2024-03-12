@@ -7,10 +7,10 @@ setup_watcher(){
    while read file_path file_event file_name; do
       if [ "$DEBUG" = true ] ; then
          echo ${file_path}${file_name} event: ${file_event}
-         echo "Copying ${1} to ${1}.back"
+         echo "Copying ${1} to back.${1}"
       fi
-      cp $1 "${1}.back"
-      chmod 644 "${1}.back"
+      cp $1 "back.${1}"
+      chmod 644 "back.${1}"
    done
 }
 
